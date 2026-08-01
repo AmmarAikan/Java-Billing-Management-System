@@ -1,0 +1,28 @@
+# Compiled output
+**/build/
+**/dist/
+**/*.class
+
+# NetBeans and IDE-local state
+**/nbproject/private/
+.idea/
+.vscode/
+*.iml
+
+# Local secrets and machine-specific configuration
+.env
+.env.*
+*.local.properties
+
+# Generated billing documents and private sales data
+Sales files/
+*.pdf
+
+# Bundled archives and upstream MySQL Connector source
+mysql-connector-j-8.4.0/
+mysql-connector-j-8.4.0.zip
+jar_files.zip
+
+# Operating-system files
+Thumbs.db
+Desktop.ini
