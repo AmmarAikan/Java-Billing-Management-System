@@ -1,15 +1,43 @@
 
 import javax.swing.JOptionPane;
-
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 public class Home extends javax.swing.JFrame {
 public int z = 0;
 
     /**
-     * Creates new form Home
+     * Plays the packaged welcome sound when an audio device is available.
      */
+    private void playWelcomeSound() {
+        java.net.URL sound = Home.class.getResource("/Sound/welcom.wav");
+        if (sound == null) {
+            System.err.println("Welcome sound resource is missing.");
+            return;
+        }
+        Clip clip = null;
+        try (AudioInputStream audio = AudioSystem.getAudioInputStream(sound)) {
+            clip = AudioSystem.getClip();
+            final Clip welcomeClip = clip;
+            clip.addLineListener(event -> {
+                if (event.getType() == javax.sound.sampled.LineEvent.Type.STOP) {
+                    welcomeClip.close();
+                }
+            });
+            clip.open(audio);
+            clip.start();
+        } catch (Exception exception) {
+            if (clip != null) {
+                clip.close();
+            }
+            System.err.println("Welcome sound unavailable: " + exception.getMessage());
+        }
+    }
+
     public Home() {
         initComponents();
+        playWelcomeSound();
       //  jButton1.setVisible(true);   // لانه السهم سواء عملناه او لا عيظهر
         jButton2.setVisible(false);
         jButton3.setVisible(false);
@@ -22,7 +50,7 @@ public int z = 0;
         jButton10.setVisible(false);
         jButton11.setVisible(false);
         jButton12.setVisible(false);
-        
+
         jLabel1.setVisible(false);
         //jLabel2.setVisible(false); because background
         jLabel3.setVisible(false);
@@ -83,7 +111,7 @@ public int z = 0;
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/control hide and show.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/control hide and show.png.png"))); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -94,10 +122,9 @@ public int z = 0;
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 6, 80, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 6, 90, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setBackground(new java.awt.Color(0, 51, 51));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/new buyer.png"))); // NOI18N
         jButton2.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -137,6 +164,7 @@ public int z = 0;
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 6, 91, -1));
 
+        jButton5.setBackground(new java.awt.Color(255, 102, 102));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete buyer.png"))); // NOI18N
         jButton5.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -335,7 +363,7 @@ public int z = 0;
         if(a==0)
         {
             System.exit(0);
-        }     
+        }
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -358,7 +386,7 @@ public int z = 0;
         if(z==0)
         {
             try{
-                
+
                 Thread.sleep(250);// تقوم هذه الطريقة بإيقاف تنفيذ الخيط الحالي (أي الخيط الذي يُشغل هذا الكود) لفترة زمنية محددة. في هذه الحالة، تُحدد الفترة الزمنية بـ 250 مللي ثانية.
                 jButton2.setVisible(true);
                 jLabel1.setVisible(true);
@@ -380,7 +408,7 @@ public int z = 0;
         jButton10.setVisible(false);
         jButton11.setVisible(false);
         jButton12.setVisible(false);
-        
+
         jLabel1.setVisible(false);
         //jLabel2.setVisible(false); because background
         jLabel3.setVisible(false);
@@ -462,16 +490,7 @@ public int z = 0;
             catch(Exception e)
             {}
     }//GEN-LAST:event_jButton7ComponentShown
-//    private void jButton8ComponentShown(java.awt.event.ComponentEvent evt) {                                        
-//        // TODO add your handling code here:
-//        try{
-//                Thread.sleep(250);
-//                jButton9.setVisible(true);
-//                jLabel8.setVisible(true);
-//            }
-//            catch(Exception e)
-//            {}
-//    }                                       
+
 
     private void jButton9ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jButton9ComponentShown
         // TODO add your handling code here:
@@ -517,18 +536,6 @@ public int z = 0;
         new NewBuyer().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton8ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jButton8ComponentShown
-        // TODO add your handling code here:
-        try{
-                Thread.sleep(250);
-                jButton9.setVisible(true);
-                jLabel8.setVisible(true);
-                z=1;
-            }
-            catch(Exception e)
-            {}
-    }//GEN-LAST:event_jButton8ComponentShown
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         new UpdateBuyer().setVisible(true);
@@ -544,14 +551,27 @@ public int z = 0;
         new DeleteBuyer().setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton8ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jButton8ComponentShown
+        // TODO add your handling code here:
+        try{
+            Thread.sleep(250);
+            jButton9.setVisible(true);
+            jLabel8.setVisible(true);
+            z=1;
+        }
+        catch(Exception e)
+        {}
+    }//GEN-LAST:event_jButton8ComponentShown
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -577,8 +597,9 @@ public int z = 0;
                 new Home().setVisible(true);
             }
         });
+
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -607,4 +628,6 @@ public int z = 0;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
+
+
 }
