@@ -25,11 +25,11 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
+        uPass = new javax.swing.JPasswordField();
+        uName = new javax.swing.JTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Login = new javax.swing.JButton();
+        Close = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
@@ -55,20 +55,15 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Password");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, -1, -1));
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 420, 190, -1));
+        uPass.setBackground(new java.awt.Color(255, 255, 255));
+        uPass.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        uPass.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(uPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 420, 190, -1));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, 190, -1));
+        uName.setBackground(new java.awt.Color(255, 255, 255));
+        uName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        uName.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(uName, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, 190, -1));
 
         jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(0, 0, 0));
@@ -80,29 +75,29 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 457, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login.png"))); // NOI18N
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Login.setBackground(new java.awt.Color(255, 255, 255));
+        Login.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Login.setForeground(new java.awt.Color(0, 0, 0));
+        Login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login.png"))); // NOI18N
+        Login.setText("Login");
+        Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                LoginActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 507, 114, -1));
+        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 507, 114, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/close Jframe.png"))); // NOI18N
-        jButton2.setText("Close");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Close.setBackground(new java.awt.Color(255, 255, 255));
+        Close.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Close.setForeground(new java.awt.Color(0, 0, 0));
+        Close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/close Jframe.png"))); // NOI18N
+        Close.setText("Close");
+        Close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                CloseActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 507, 102, -1));
+        getContentPane().add(Close, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 507, 102, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login ani.gif"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, -1, -1));
@@ -126,7 +121,7 @@ public class Login extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(683, 598, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 590, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -158,39 +153,35 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
         if (jCheckBox1.isSelected())
         {
-            jPasswordField1.setEchoChar((char)0 );
+            uPass.setEchoChar((char)0 );
         }
         else
-            jPasswordField1.setEchoChar('*');
+            uPass.setEchoChar('*');
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
         // TODO add your handling code here:
         int a = JOptionPane.showConfirmDialog(null, "Doyou really want to Close Application","Select",JOptionPane.YES_NO_OPTION);
         if(a==0)
         {
         System.exit(0);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_CloseActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
-           if(jTextField1.getText().equals("bms") && jPasswordField1.getText().equals("admin"))
+           if(uName.getText().equals("bms") && uPass.getText().equals("admin"))
            {
                setVisible(false);
                new Home().setVisible(true);
            }
            else
                JOptionPane.showMessageDialog(null, "Incorrect Username or Password");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_LoginActionPerformed
 
     
     
@@ -208,7 +199,7 @@ public class Login extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
 
-            Desktop.getDesktop().browse( new URI("https://github.com/AmmarAiqan"));
+            Desktop.getDesktop().browse( new URI("https://github.com/AmmarAikan"));
         } catch (URISyntaxException ex) {
            ex.printStackTrace();
         } catch (IOException ex) {
@@ -253,8 +244,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Close;
+    private javax.swing.JButton Login;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JCheckBox jCheckBox1;
@@ -265,8 +256,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField uName;
+    private javax.swing.JPasswordField uPass;
     // End of variables declaration//GEN-END:variables
 }

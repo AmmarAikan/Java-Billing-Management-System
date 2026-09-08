@@ -26,3 +26,12 @@ jar_files.zip
 # Operating-system files
 Thumbs.db
 Desktop.ini
+
+# Local database notes and exports
+DB.txt
+*.sql
+*.sql.gz
+*.dump
+
+# Default generated invoices if placed inside the checkout
+BMS Sales/

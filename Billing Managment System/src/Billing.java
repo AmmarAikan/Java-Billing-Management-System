@@ -90,7 +90,7 @@ public int finalTotal=0;
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/billing frame.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/billing.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 6, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Billing ani.gif"))); // NOI18N
@@ -582,13 +582,16 @@ public int finalTotal=0;
         String email= jTextField3.getText();
         String address= jTextField4.getText();
         //الان بنعمل متغير لحفظ المسار
-        String path = System.getenv().getOrDefault(
-                "BMS_SALES_DIR",
-                System.getProperty("user.home") + "\\BMS Sales\\");
+        String configuredSalesDir = System.getenv("BMS_SALES_DIR");
+        java.nio.file.Path salesDirectory = configuredSalesDir == null || configuredSalesDir.trim().isEmpty()
+                ? java.nio.file.Paths.get(System.getProperty("user.home"), "BMS Sales")
+                : java.nio.file.Paths.get(configuredSalesDir);
+        String safeName = name.replaceAll("[^\\p{L}\\p{N}._ -]", "_");
         com.itextpdf.text.Document doc= new com.itextpdf.text.Document();
         try {
-            java.nio.file.Files.createDirectories(java.nio.file.Paths.get(path));
-            PdfWriter.getInstance(doc, new FileOutputStream(path+" "+name+" "+jLabel5.getText()+".pdf"));
+            java.nio.file.Files.createDirectories(salesDirectory);
+            java.nio.file.Path billFile = salesDirectory.resolve(safeName + " " + jLabel5.getText() + ".pdf");
+            PdfWriter.getInstance(doc, new FileOutputStream(billFile.toFile()));
             doc.open();
             Paragraph paragraph1= new Paragraph("                                     Aiqan(Billing Managment System)\n                                        Contact Number:(+967)773541330\n\n");
             doc.add(paragraph1);
